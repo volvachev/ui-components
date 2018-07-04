@@ -231,6 +231,21 @@ export default {
   mounted() {
     this.init();
   },
+  destroyed() {
+    this.audio.removeEventListener('timeupdate', this.handleAudioTimeUpdate);
+    this.audio.removeEventListener('durationchange', this.handleAudioDurationChange);
+    this.audio.removeEventListener('loadeddata', this.handleLoaded);
+    this.audio.removeEventListener('volumechange', this.handleAudioVolumeChange);
+    this.audio.removeEventListener('play', this.handleAudioPlay);
+    this.audio.removeEventListener('pause', this.handleAudioPause);
+    this.audio.removeEventListener('abort', this.handleAudioPause);
+    this.audio.removeEventListener('waiting', this.handleAudioWaiting);
+    this.audio.removeEventListener('canplay', this.handleAudioCanplay);
+    this.audio.removeEventListener('progress', this.handleAudioProgress);
+    this.audio.removeEventListener('seeking', this.handleAudioSeeking);
+    this.audio.removeEventListener('seeked', this.handleAudioSeeked);
+    this.audio.removeEventListener('ended', this.handleAudioEnded);
+  },
 };
 </script>
 

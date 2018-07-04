@@ -46,14 +46,17 @@ export default {
       this.$emit('dragend', this.calculatePersentage(e));
     },
     onThumbTouchStart(e) {
+      // touch device. TODO: splite bundle for many device.
       this.$emit('dragbegin', this.calculatePersentage(e));
       document.addEventListener('touchmove', this.onDocumentTouchMove);
       document.addEventListener('touchend', this.onDocumentTouchEnd);
     },
     onDocumentTouchMove({ changedTouches: [touch] }) {
+      // touch device. TODO: splite bundle for many device.
       this.$emit('dragging', this.calculatePersentage(touch));
     },
     onDocumentTouchEnd({ changedTouches: [touch] }) {
+      // touch device. TODO: splite bundle for many device.
       document.removeEventListener('touchend', this.onDocumentTouchEnd);
       document.removeEventListener('touchmove', this.onDocumentTouchMove);
       this.$emit('dragend', this.calculatePersentage(touch));
@@ -61,7 +64,7 @@ export default {
     calculatePersentage({ clientX }) {
       const { clientWidth } = this.$refs.barWrap;
       let percentage = (clientX - getElementViewLeft(this.$refs.barWrap)) / clientWidth;
-      percentage = percentage > 0 ? percentage : 0;
+      percentage = percentage > 0 ? percentage : 0; // float number, check drag progress bar on all pages.
       percentage = percentage < 1 ? percentage : 1;
       return percentage;
     },

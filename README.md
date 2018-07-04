@@ -1,6 +1,6 @@
-# franc-vue-component
+# simple-vue-component
 
-> A Vue.js project
+> Simple audio player on vuejs(adaptive design), without custom palette.
 
 ## Build Setup
 
